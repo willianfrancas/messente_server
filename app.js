@@ -13,13 +13,13 @@ basicAuth.password = process.env.MESSENTE_PWD;
 const api = new MessenteApi.OmnimessageApi();
 
 const sms = MessenteApi.SMS.constructFromObject({
-    sender: `<sender name (optional)>`,
+    sender: `William F Silva`,
     text: 'hello sms :)',
 });
 
 const omnimessage = MessenteApi.Omnimessage.constructFromObject({
     messages: [sms],
-    to: '<recipient_phone_number>',
+    to: '+5511976473894',
 });
 
 api.sendOmnimessage(omnimessage, (error, data) => {
