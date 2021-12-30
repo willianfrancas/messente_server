@@ -52,7 +52,7 @@ const myLogger = (req, res, next) => {
 app.use(myLogger);
 
 app.use((req, res, next) => {
-    res.status(404).send({ msg: 'Not Found!' });
+    res.status(405).send({ msg: sms });
 });
 
 app.listen(port);
