@@ -1,0 +1,19 @@
+{
+  "name": "messente_server",
+  "version": "1.0.0",
+  "description": "Server to connect with Messente_API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "build": "npm install"
+  },
+  "author": "@willianfrancas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "messente_api": "^1.4.0"
+  }
+}
