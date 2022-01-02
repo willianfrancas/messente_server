@@ -24,9 +24,9 @@ const SMSController = {
 
         api.sendOmnimessage(omnimessage, (error, data) => {
             if (error) {
-                console.error(error);
+                res.status(400).json({ message: error });
             } else {
-                console.log('API called successfully. Returned data: ', data);
+                res.status(200).json({ message: `API called successfully. Returned data:`, data });
             }
         });
     },
