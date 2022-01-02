@@ -3,6 +3,8 @@ const MessenteApi = require('messente_api');
 const SMSController = {
 
     sendSMS: async (req, res) => {
+        const { fromNumber, toNumber, textMessage } = req.body;
+
         const defaultClient = MessenteApi.ApiClient.instance;
         const basicAuth = defaultClient.authentications['basicAuth'];
         basicAuth.username = process.env.MESSENTE_USER;
@@ -11,13 +13,13 @@ const SMSController = {
         const api = new MessenteApi.OmnimessageApi();
 
         const sms = MessenteApi.SMS.constructFromObject({
-            sender: process.env.CELLPHONE,
-            text: 'Hello from messente api SMS :)',
+            sender: fromNumber,
+            text: textMessage,
         });
 
         const omnimessage = MessenteApi.Omnimessage.constructFromObject({
             messages: [sms],
-            to: process.env.CELLPHONE,
+            to: toNumber,
         });
 
         api.sendOmnimessage(omnimessage, (error, data) => {

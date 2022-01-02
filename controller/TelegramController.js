@@ -3,6 +3,7 @@ const MessenteApi = require('messente_api');
 const TelegramController = {
 
     sendTelegramMessage: async (req, res) => {
+        const { fromNumber, toNumber, textMessage } = req.body;
 
         const defaultClient = MessenteApi.ApiClient.instance;
         const basicAuth = defaultClient.authentications['basicAuth'];
@@ -12,14 +13,14 @@ const TelegramController = {
         const api = new MessenteApi.OmnimessageApi();
 
         const telegram = MessenteApi.Telegram.constructFromObject({
-            text: 'Hello from messente api telegram!',
-            sender: process.env.CELLPHONE,
+            text: textMessage,
+            sender: fromNumber,
             image_url: process.env.IMAGE,
         });
 
         const omnimessage = MessenteApi.Omnimessage.constructFromObject({
             messages: [telegram],
-            to: process.env.CELLPHONE,
+            to: toNumber,
         });
 
         api.sendOmnimessage(omnimessage, (error, data) => {

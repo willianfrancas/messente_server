@@ -21,7 +21,8 @@ app.use(cors());
 
 const myLogger = (req, res, next) => {
     next();
-}
+};
+
 app.use(myLogger);
 app.use('/api', api);
 
